@@ -1,0 +1,123 @@
+/* styles.css */
+
+* {
+    font-family: "Cabin", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    color: #1C1C1C;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('pictures/wallpaper.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #111;
+    position: relative;
+}
+
+.container {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 42px 64px;
+    background-color: #fff;
+    backdrop-filter: blur(6px);
+    border-radius: 25px;
+    font-size: clamp(1.125rem, 1.125rem + ((1vw - 0.2rem) * 0.156), 1.25rem);
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 35px;
+    padding: 18px 36px;
+    width: 200px;  /* Set fixed width */
+    height: 60px;  /* Set fixed height */
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.156), 1.2rem);
+    transition: all ease-out 0.35s;
+}
+
+button:hover {
+    background-color: #1aad64;
+    transition: all ease-out 0.35s;
+}
+
+h1, h2 {
+    font-size: clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 0.625), 2.25rem);
+    text-align: center;
+    font-weight: 600;
+    color: #2C2C2C;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+input[type="range"] {
+    appearance: none;
+    border-color: #2C2C2C;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 9999px;
+    width: 100%;
+}
+
+label {
+    margin-right: 25px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+input[type="radio"] {
+    appearance: none;
+    margin-right: 10px;
+    display: block;
+    border-radius: 9999px;
+    width: 24px;
+    height: 24px;
+    border-style: solid;
+    border-color: #999;
+    border-width: 2px;
+    background-color: #fff;
+    transition: all 0.35s;
+}
+
+input[type="radio"]:hover, button[type="radio"]:focus {
+    background-color: #2C2C2C;
+    transition: all 0.35s;
+}
+
+input[type="radio"]:active, input[type="radio"]:checked {
+    border-width: 8px;
+    border-color: #2C2C2C;
+    background-color: #fff;
+    transition: all 0.35s;
+}
+
+/* Additional CSS for small picture */
+.small-picture {
+    position: absolute;
+    z-index: 9999;
+    top: -60px;
+    right: 40px;
+    width: 130px;
+    height: auto;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 90px;
+    color: #999;
+    border-bottom: 1px solid #999;
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <img src="pictures/Carbon-Floor.png" class="small-picture" alt="Small Picture">
+    
+    <div class="container">
+        <!-- Welcome Page -->
+        <div id="welcome" class="welcome-page">
+            <div class="welcome-content">
+                <h1>CARBON FOOTPRINT CALCULATOR</h1>
+                <p>This calculator will help companies in the logistics industry estimate their carbon footprint. Please answer the following questions:</p>
+                <button onclick="startQuiz()">Start Now</button>
+            </div>
+        </div>
+
+        <div id="questions" style="display: none;">
+            <!-- Page 1: Transportation Modes -->
+            <div id="page1">
+                <div class="question">
+                    <p>Transportation Modes: Fuel type</p>
+                    <label><input type="radio" name="transportationModes" value="2.31">Gasoline (Petrol)</label><br>
+                    <label><input type="radio" name="transportationModes" value="2.68">Diesel Fuel</label><br>
+                    <label><input type="radio" name="transportationModes" value="3.15">Aviation Fuel (Jet A or Jet A-1)</label><br>
+                    <label><input type="radio" name="transportationModes" value="1.86">Natural Gas (Compressed Natural Gas - CNG)</label><br>
+                    <label><input type="radio" name="transportationModes" value="1.51">Liquefied Petroleum Gas (LPG)</label><br>
+                    <label><input type="radio" name="transportationModes" value="2.5">Biodiesel</label>
+                </div>
+                <button onclick="nextPage(1)">Next</button>
+            </div>
+
+            <!-- Page 2: Distance Traveled -->
+            <div id="page2" style="display: none;">
+                <div class="question">
+                    <p>Distance Traveled (miles):</p>
+                    <input type="number" name="distanceTraveled" style="font-size: 20px; width: 200px;" placeholder="Fill in miles">
+                </div>
+                <button onclick="previousPage(2)">Previous</button>
+                <button onclick="nextPage(2)">Next</button>
+            </div>
+
+            <!-- Page 3: Freight Volume -->
+            <div id="page3" style="display: none;">
+                <div class="question">
+                    <p>Freight Volume:</p>
+                    <label><input type="radio" name="freightVolume" value="1">Low volume (less than 100 tons annually)</label><br>
+                    <label><input type="radio" name="freightVolume" value="2">Moderate volume (100 - 500 tons annually)</label><br>
+                    <label><input type="radio" name="freightVolume" value="3">High volume (500 - 1,000 tons annually)</label><br>
+                    <label><input type="radio" name="freightVolume" value="4">Very high volume (more than 1,000 tons annually)</label>
+                </div>
+                <button onclick="previousPage(3)">Previous</button>
+                <button onclick="nextPage(3)">Next</button>
+            </div>
+
+            <!-- Page 4: Packaging Materials -->
+            <div id="page4" style="display: none;">
+                <div class="question">
+                    <p>Packaging Materials: CO2 emission factor TBD</p>
+                    <label><input type="radio" name="packagingMaterials" value="1">Mostly plastic</label><br>
+                    <label><input type="radio" name="packagingMaterials" value="2">Mostly cardboard</label><br>
+                    <label><input type="radio" name="packagingMaterials" value="3">Combination of plastic and cardboard</label><br>
+                    <label><input type="radio" name="packagingMaterials" value="4">Biodegradable materials</label>
+                </div>
+                <button onclick="previousPage(4)">Previous</button>
+                <button onclick="nextPage(4)">Next</button>
+            </div>
+
+            <!-- Page 5: Usage of Packaging Materials -->
+            <div id="page5" style="display: none;">
+                <div class="question">
+                    <p>Usage of Packaging Materials (kg):</p>
+                    <input type="number" name="usagePackagingMaterials" style="font-size: 20px; width: 200px;" placeholder="Fill in kg">
+                </div>
+                <button onclick="previousPage(5)">Previous</button>
+                <button onclick="nextPage(5)">Next</button>
+            </div>
+
+            <!-- Page 6: Warehouse Operations -->
+            <div id="page6" style="display: none;">
+                <div class="question">
+                    <p>Warehouse Operations:</p>
+                    <label><input type="radio" name="warehouseOperations" value="2">Primarily powered by electricity</label><br>
+                    <label><input type="radio" name="warehouseOperations" value="3">Primarily powered by natural gas</label><br>
+                    <label><input type="radio" name="warehouseOperations" value="2.5">Combination of electricity and natural gas</label><br>
+                    <label><input type="radio" name="warehouseOperations" value="1">Renewable energy sources utilized</label>
+                </div>
+                <button onclick="previousPage(6)">Previous</button>
+                <button onclick="nextPage(6)">Next</button>
+            </div>
+
+            <!-- Page 7: How many KWH per year -->
+            <div id="page7" style="display: none;">
+                <div class="question">
+                    <p>How many KWH per year:</p>
+                    <input type="number" name="kwhPerYear" style="font-size: 20px; width: 200px;" placeholder="Fill in KWH">
+                </div>
+                <button onclick="previousPage(7)">Previous</button>
+                <button onclick="nextPage(7)">Next</button>
+            </div>
+
+            <!-- Page 8: Supply Chain Complexity -->
+            <div id="page8" style="display: none;">
+                <div class="question">
+                    <p>Supply Chain Complexity:</p>
+                    <label><input type="radio" name="supplyChainComplexity" value="1">No intermediary</label><br>
+                    <label><input type="radio" name="supplyChainComplexity" value="2">3 - 5 intermediaries</label><br>
+                    <label><input type="radio" name="supplyChainComplexity" value="3">6 - 8 intermediaries</label><br>
+                    <label><input type="radio" name="supplyChainComplexity" value="4">More than 8 intermediaries</label>
+                </div>
+                <button onclick="previousPage(8)">Previous</button>
+                <button onclick="nextPage(8)">Next</button>
+            </div>
+
+            <!-- Page 9: Route Optimization -->
+            <div id="page9" style="display: none;">
+                <div class="question">
+                    <p>Route Optimization:</p>
+                    <label><input type="radio" name="routeOptimization" value="4">No route optimization software utilized</label><br>
+                    <label><input type="radio" name="routeOptimization" value="3">Basic route optimization software used occasionally</label><br>
+                    <label><input type="radio" name="routeOptimization" value="2">Advanced route optimization software used regularly</label><br>
+                    <label><input type="radio" name="routeOptimization" value="1">Customized route optimization solutions implemented</label>
+                </div>
+                <button onclick="previousPage(9)">Previous</button>
+                <button onclick="nextPage(9)">Next</button>
+            </div>
+
+            <!-- Page 10: Alternative Fuels and Technologies -->
+            <div id="page10" style="display: none;">
+                <div class="question">
+                    <p>Alternative Fuels and Technologies:</p>
+                    <label><input type="radio" name="alternativeFuels" value="4">No exploration of alternative fuels or technologies</label><br>
+                    <label><input type="radio" name="alternativeFuels" value="3">Investigating alternative options but not yet implemented</label><br>
+                    <label><input type="radio" name="alternativeFuels" value="2">Partial adoption of alternative fuels or technologies</label><br>
+                    <label><input type="radio" name="alternativeFuels" value="1">Fully integrated alternative fuels or technologies into the fleet</label>
+                </div>
+                <button onclick="previousPage(10)">Previous</button>
+                <button onclick="calculateResult()">Calculate Result</button>
+            </div>
+
+<!-- Result Page -->
+<div id="result" style="display: none;">
+    <h2>Your Estimated Carbon Footprint</h2>
+    <p id="resultText"></p>
+    <div style="width:500px; height:500px; display: flex; justify-content: center; align-items: center;">
+        <canvas id="myChart"></canvas>
+    </div>
+    <button onclick="categorizeResult()">Categorize</button>
+    <button onclick="restartQuiz()">Restart</button>
+</div>
+
+<!-- Categorized Result Page -->
+<div id="categorizedResult" style="display: none;">
+    <h2>Categorized Carbon Footprint</h2>
+    <div class="scope-section">
+        <h3>Scope 1 Emissions</h3>
+        <p>These are direct emissions from owned or controlled sources. For example, emissions from combustion in owned or controlled boilers, furnaces, vehicles, etc., and emissions from chemical production in owned or controlled process equipment.</p>
+        <p id="scope1"></p>
+    </div>
+    <div class="scope-section">
+        <h3>Scope 2 Emissions</h3>
+        <p>These are indirect emissions from the generation of purchased energy. This includes emissions from the generation of electricity, heat, or steam purchased by the company.</p>
+        <p id="scope2"></p>
+    </div>
+    <div class="scope-section">
+        <h3>Scope 3 Emissions</h3>
+        <p>These are all other indirect emissions that occur in a company’s value chain. This includes emissions from activities such as business travel, employee commuting, waste disposal, and the use of sold products and services.</p>
+        <p id="scope3"></p>
+    </div>
+    <button onclick="goBackToResult()">Go Back</button>
+</div>
+
+
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
